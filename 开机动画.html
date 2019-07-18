@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>开机动画</title>
+    <style>
+        .box {
+            width: 322px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            overflow: hidden;
+        }
+
+        span {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <span id="closeButton"></span>
+        <div class="hd" id="headPart">
+            <img src="images/t.jpg" alt="" />
+        </div>
+        <div class="bd" id="bottomPart">
+            <img src="images/b.jpg" alt="" />
+        </div>
+    </div>
+</body>
+<script src="./js/jquery-2.2.2.js"></script>
+<script>
+    // 显示效果:底部高度先变为0,后整个盒子宽度变为0
+    // 获取按钮
+    $('#closeButton').on('click', function () {
+        // 先把底部的高度设置为0
+        $('#bottomPart').animate({ height: 0 }, 1000, function () {
+            // 动画结束，继续把整个盒子的宽度设置为0
+            $('#box').animate({ width: 0 }, 1000);
+        })
+    });
+
+    // 第二遍
+    $('#closeButton').on('click', function () {
+        $('#bottomPart').animate({ height: 0 }, 1000, function () {
+            $('#box').animate({ width: 0 }, 1000);
+        })
+    });
+
+    // 第三遍
+    $('#closeButton').on('click', function () {
+        $('#bottomPart').animate({ height: 0 }, 1300, function () {
+            $('#box').animate({ width: 0 }, 1300);
+        })
+    })
+</script>
+
+</html>

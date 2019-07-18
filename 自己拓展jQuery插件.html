@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 拓展可获取与设置背景颜色的实例方法
+// 固定语法: $.fn.方法名=function(){}
+$.fn.backgroundColor=function(color){
+    if(!color){
+        return this.css('backgroundColor');
+    }else{
+        this.css('backgroundColor',color);
+        return this;
+    }
+}
+</script>
+</html>

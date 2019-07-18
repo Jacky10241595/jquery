@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>二级菜单</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .parentWrap {
+            width: 200px;
+            text-align: center;
+
+        }
+
+        .menuGroup {
+            border: 1px solid #999;
+            background-color: #e0ecff;
+        }
+
+        .groupTitle {
+            display: block;
+            height: 20px;
+            line-height: 20px;
+            font-size: 16px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .menuGroup > div {
+            height: 200px;
+            background-color: #fff;
+            display: none;
+        }
+
+    </style>    
+</head>
+<body>
+
+    <ul class="parentWrap">
+        <li class="menuGroup">
+            <span class="groupTitle">标题1</span>
+            <div>我是弹出来的div1</div>
+        </li>
+        <li class="menuGroup">
+            <span class="groupTitle">标题2</span>
+            <div>我是弹出来的div2</div>
+        </li>
+        <li class="menuGroup">
+            <span class="groupTitle">标题3</span>
+            <div>我是弹出来的div3</div>
+        </li>
+        <li class="menuGroup">
+            <span class="groupTitle">标题4</span>
+            <div>我是弹出来的div4</div>
+        </li>
+    </ul>
+
+</body>
+<script src="./js/jquery-2.2.2.js"></script>
+<script>
+// 点击li,让li的子元素div显示出来,让其他兄弟元素li的子元素div消失
+
+// 方法一
+// 获取所有li
+// $('.menuGroup').on('click',function(){
+//     //找到当前li的子元素div并显示
+//     $(this).children('div').css('display','block');
+//     // 让其他兄弟元素li的子元素div消失
+//     $(this).siblings().children('div').css('display','none');
+// });
+
+// // 方法二
+// // 要求点击的是span,找到兄弟元素div,设为显示,找到堂兄弟div并隐藏
+// // 先获取span
+// $('.groupTitle').on('click',function(){
+//     // 找到兄弟元素div并隐藏
+//     $(this).siblings().css('display','block');
+//     // 找到堂兄弟元素div并隐藏:先获取父元素,再获取父元素的兄弟元素也就是叔叔伯伯元素,再获取其子元素,即堂兄弟元素
+//     $(this).parent().siblings().children('div').css('display','none');
+// });
+
+// // 方法三
+// // 要求点击的是span,找到兄弟元素div,设为显示,找到堂兄弟div并隐藏
+// // 先获取span
+// $('.groupTitle').on('click',function(){
+//     // 找到兄弟元素
+//     $(this).siblings().show();
+//     // 找到堂兄弟元素,隐藏
+//     $(this).parent().siblings().children('div').hide();
+// });
+
+// 第二遍:方法一
+$('.menuGroup').on('click',function () {
+    $(this).children('div').show();
+    $(this).siblings().children('div').hide();
+  });
+//   方法二
+$('.groupTitle').on('click',function () {
+    $(this).siblings().show();
+    $(this).parent().siblings().children('div').hide();
+  })
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="从后面添加" id="btn1">
+    <input type="button" value="从前面添加" id="btn2">
+    <input type="button" value="从中间插入" id="btn3">
+    <ul>
+        <li>我是第1个li</li>
+        <li>我是第2个li</li>
+        <li>我是第3个li</li>
+        <li>我是第4个li</li>
+        <li>我是第5个li</li>
+    </ul>
+</body>
+<script src="./js/jquery-2.2.2.js"></script>
+<script>
+    let ul = $('ul');
+    // 从末尾添加
+    $('#btn1').on('click', function () {
+        // 第一种方法
+        // ul.append('<li>我是新的li</li>');
+        // 第二种方法
+        let li = $('<li>我是新的li</li>')
+        li.appendTo(ul);
+    });
+    // 在最前面添加
+    $('#btn2').on('click', function () {
+        let li = $('<li>我是新的li</li>');
+        ul.prepend(li);
+        // 第二种
+        li.prependTo(ul);
+    });
+    // 在中间指定位置插入
+    $('#btn3').on('click', function () {
+        let li = $('<li>我是新的li</li>');
+        ul.children().eq(2).before(li);
+        // 第二种
+        ul.children().eq(1).after(li);
+    })
+</script>
+
+</html>

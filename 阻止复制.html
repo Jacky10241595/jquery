@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            /* 不允许用户进行选取操作 */
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>hello,world!</div>
+</body>
+<script src="./js/jquery-2.2.2.js"></script>
+<script>
+    // 阻止用户复制:1.阻止右键菜单复制;2.阻止ctrl+c复制
+    //1.阻止右键菜单
+    $('html').on('contextmenu', function (e) {
+        e.preventDefault();
+    });
+    //2.阻止按下ctrl+c
+    $(document).on('keydown', (e, i) => {
+        // 判断是否同时按下ctrl和c
+        if (e.ctrlKey && e.keyCode === 67) {
+            e.preventDefault();
+        }
+    });
+
+    // 第二遍
+    // 1.阻止右键
+    $(document).on('contextmenu', function (e) {
+        e.preventDefault();
+    });
+    //2.阻止ctrl+c
+    $(document).on('keydown', (e) => {
+        //判断是否同时按下两个键
+        if (e.ctrlKey && e.keyCode === 67) {
+            e.preventDefault();
+        }
+    });
+
+    // 第三遍
+    // 阻止右键
+    $('document').on('contextmenu', function (e) {
+        e.preventDefault();
+    });
+    // 阻止ctrl+c
+    $('document').on('keydown', (e, i) => {
+        if (e.ctrlKey && e.keyCode === 67) {
+            e.preventDefault();
+        }
+    })
+</script>
+
+</html>

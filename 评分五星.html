@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .comment {
+            font-size: 40px;
+            color: red;
+        }
+
+        .comment li {
+            float: left;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="comment">
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+</body>
+<script src="./js/jquery-2.2.2.js"></script>
+<script>
+    // 显示效果:
+    //    1.鼠标移入,鼠标到哪个星星上,当前星星和前面的都变实心;
+    //    2.鼠标移出,分数回归之前的分数;
+    //    3.鼠标点击,修改分数
+
+    $((e, i) => {
+        // 获取元素
+        let lis = $('.comment>li');
+        // 效果一
+        lis.on('mouseover', function () {
+            // 定义当前元素索引
+            let index = $(this).index();
+            // each循环
+            lis.each((i, e) => {//i是索引,e是元素
+                // 判断,如果索引比当前的索引小,则都变为实心
+                if (i <= index) {
+                    $(e).text('★')
+                } else {
+                    $(e).text('☆')
+                }
+            })
+        })
+
+        // 声明一个变量,表示当前分数
+        let score = 0;
+        // 效果二,鼠标移出
+        lis.on('mouseout', function () {
+            lis.each((i, e) => {
+                //如果索引比当前的分数要小，就是实心的
+                if (i < score) {
+                    $(e).text('★')
+                } else {
+                    $(e).text('☆')
+                }
+            })
+        })
+
+        // 效果三,鼠标点击修改分数
+        lis.on('click', function () {
+            // 索引+1作为分数
+            score = $(this).index() + 1;
+        })
+    })
+</script>
+
+</html>

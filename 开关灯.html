@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>开灯</button>
+    <button>关灯</button>
+</body>
+<script src="./js/jquery-1.12.2.js"></script>
+<script>
+    // $(function () {
+    //     // let btn1=$('button').eq(1);
+    //     $('button').eq(1).on('click', function () {//通过索引取出元素
+    //         $('body').css('backgroundColor', 'black');
+    //     });
+
+    //     // 伪类选择器
+    //     $('button:nth-child(1)').on('click', function () {
+    //         $('body').css('backgroundColor', '#fff');
+    //     })
+    // });
+
+    // 第二遍
+    // $(function () {
+    //     $('button').eq(1).on('click', function () {
+    //         $('body').css('backgroundColor', '#000');
+    //     });
+    //     $('button:nth-child(1)').on('click',function(){
+    //         $('body').css('backgroundColor','#fff');
+    //     });
+    // })
+
+    // 第三遍
+    $(function(){
+        $('button').eq(1).on('click',function(){
+            $('body').css('backgroundColor','#000');
+        });
+        $('button:nth-child(1)').on('click',function(){
+            $('body').css('backgroundColor','#fff');
+        })
+    })
+</script>
+
+</html>
